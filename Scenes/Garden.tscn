@@ -1,0 +1,454 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://Textures/Backgrounds/Garden.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Garden.gd" type="Script" id=2]
+[ext_resource path="res://Textures/Sprites/meimei_happy.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/animessage5.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/garden_flower.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/Ubuntu.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Scripts/garden_play.gd" type="Script" id=7]
+[ext_resource path="res://Textures/Sprites/shou.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Sprites/gou.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Buttons/HintButton_default.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Buttons/HintButton_hover.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/note_garden.gd" type="Script" id=12]
+
+[node name="Garden" type="TextureFrame"]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 960.0
+texture = ExtResource( 1 )
+stretch_mode = 0
+script/script = ExtResource( 2 )
+
+[node name="mei_flower" type="Sprite" parent="."]
+
+transform/pos = Vector2( 154, 586 )
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="mei_play" type="Sprite" parent="."]
+
+transform/pos = Vector2( 154, 586 )
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="SingleDialog" type="Panel" parent="."]
+
+editor/display_folded = true
+visibility/opacity = 0.75
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 440.0
+margin/top = 120.0
+margin/right = 1040.0
+margin/bottom = 240.0
+
+[node name="Message" type="RichTextLabel" parent="SingleDialog"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 22.0
+margin/top = 18.0
+margin/right = 295.0
+margin/bottom = 48.0
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+script/script = ExtResource( 4 )
+
+[node name="Timer1" type="Timer" parent="SingleDialog"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = false
+autostart = true
+
+[node name="Button" type="Button" parent="SingleDialog"]
+
+rect/scale = Vector2( 1.75, 1.75 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 440.0
+margin/top = 76.0
+margin/right = 524.0
+margin/bottom = 96.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "I see..."
+flat = false
+
+[node name="Flower" type="Panel" parent="."]
+
+visibility/opacity = 0.75
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 440.0
+margin/top = 120.0
+margin/right = 1040.0
+margin/bottom = 240.0
+script/script = ExtResource( 5 )
+
+[node name="Message" type="RichTextLabel" parent="Flower"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 30.0
+margin/top = 8.0
+margin/right = 303.0
+margin/bottom = 59.0
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+script/script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Flower"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = false
+autostart = true
+
+[node name="Choices" type="Panel" parent="Flower"]
+
+editor/display_folded = true
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 142.0
+margin/right = 300.0
+margin/bottom = 251.0
+
+[node name="A" type="Button" parent="Flower/Choices"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 39.0
+margin/top = 14.0
+margin/right = 280.0
+margin/bottom = 36.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="B" type="Button" parent="Flower/Choices"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 41.0
+margin/top = 45.0
+margin/right = 280.0
+margin/bottom = 67.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="C" type="Button" parent="Flower/Choices"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 40.0
+margin/top = 79.0
+margin/right = 282.0
+margin/bottom = 101.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="Play" type="Panel" parent="."]
+
+visibility/opacity = 0.75
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 542.0
+margin/top = 90.0
+margin/right = 1142.0
+margin/bottom = 210.0
+script/script = ExtResource( 7 )
+
+[node name="Message" type="RichTextLabel" parent="Play"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 28.0
+margin/top = 8.0
+margin/right = 301.0
+margin/bottom = 59.0
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+script/script = ExtResource( 4 )
+
+[node name="Timer1" type="Timer" parent="Play"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = false
+autostart = true
+
+[node name="Choices" type="Panel" parent="Play"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -2.0
+margin/top = 130.0
+margin/right = 298.0
+margin/bottom = 237.0
+
+[node name="A" type="Button" parent="Play/Choices"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 15.0
+margin/top = 14.0
+margin/right = 286.0
+margin/bottom = 36.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="B" type="Button" parent="Play/Choices"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 15.0
+margin/top = 43.0
+margin/right = 286.0
+margin/bottom = 65.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="C" type="Button" parent="Play/Choices"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 15.0
+margin/top = 72.0
+margin/right = 286.0
+margin/bottom = 94.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="HappinessLevel" type="Panel" parent="."]
+
+editor/display_folded = true
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 820.0
+margin/top = 24.0
+margin/right = 1020.0
+margin/bottom = 52.0
+
+[node name="Label" type="RichTextLabel" parent="HappinessLevel"]
+
+rect/scale = Vector2( 1.25, 1.25 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 21.0
+margin/top = 8.0
+margin/right = 151.0
+margin/bottom = 32.0
+bbcode/enabled = true
+bbcode/bbcode = "HAPPINESS LEVEL:"
+visible_characters = -1
+percent_visible = 1.0
+
+[node name="Score" type="RichTextLabel" parent="HappinessLevel"]
+
+rect/scale = Vector2( 1.25, 1.25 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 171.0
+margin/top = 8.0
+margin/right = 201.0
+margin/bottom = 39.0
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+
+[node name="Container" type="Container" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 720.0
+margin/top = 440.0
+margin/right = 1828.0
+margin/bottom = 1072.0
+
+[node name="A" type="Sprite" parent="Container"]
+
+transform/pos = Vector2( 416, 94 )
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+
+[node name="B" type="Sprite" parent="Container"]
+
+transform/pos = Vector2( 106, 210 )
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+
+[node name="C" type="Sprite" parent="Container"]
+
+transform/pos = Vector2( 246, 96 )
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+
+[node name="Dogs" type="Container" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 160.0
+margin/top = 400.0
+margin/right = 760.0
+margin/bottom = 800.0
+
+[node name="A" type="Sprite" parent="Dogs"]
+
+transform/pos = Vector2( 246, 100 )
+texture = ExtResource( 9 )
+
+[node name="B" type="Sprite" parent="Dogs"]
+
+transform/pos = Vector2( 246, 302 )
+texture = ExtResource( 9 )
+
+[node name="C" type="Sprite" parent="Dogs"]
+
+transform/pos = Vector2( 348.683, 342.213 )
+transform/scale = Vector2( 0.634538, 0.574751 )
+texture = ExtResource( 9 )
+
+[node name="Clues" type="TextureButton" parent="."]
+
+editor/display_folded = true
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 26.0
+margin/top = 44.0
+margin/right = 326.0
+margin/bottom = 344.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 10 )
+textures/hover = ExtResource( 11 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Note" type="TextureFrame" parent="Clues"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 668.0
+margin/top = 392.0
+margin/right = 2418.0
+margin/bottom = 1642.0
+stretch_mode = 0
+script/script = ExtResource( 12 )
+
+[connection signal="timeout" from="SingleDialog/Timer1" to="SingleDialog/Message" method="_on_Timer1_timeout"]
+
+[connection signal="pressed" from="SingleDialog/Button" to="SingleDialog/Message" method="_on_Button_pressed"]
+
+[connection signal="timeout" from="Flower/Timer" to="Flower" method="_on_Timer_timeout"]
+
+[connection signal="pressed" from="Flower/Choices/A" to="Flower" method="_on_A_pressed"]
+
+[connection signal="pressed" from="Flower/Choices/B" to="Flower" method="_on_B_pressed"]
+
+[connection signal="pressed" from="Flower/Choices/C" to="Flower" method="_on_C_pressed"]
+
+[connection signal="timeout" from="Play/Timer1" to="Play" method="_on_Timer1_timeout"]
+
+[connection signal="pressed" from="Play/Choices/A" to="Play" method="_on_A_pressed"]
+
+[connection signal="pressed" from="Play/Choices/B" to="Play" method="_on_B_pressed"]
+
+[connection signal="pressed" from="Play/Choices/C" to="Play" method="_on_C_pressed"]
+
+[connection signal="mouse_enter" from="Clues" to="Clues/Note" method="_on_Clues_mouse_enter"]
+
+[connection signal="mouse_exit" from="Clues" to="Clues/Note" method="_on_Clues_mouse_exit"]
+
+

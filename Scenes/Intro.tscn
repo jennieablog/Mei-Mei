@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Textures/Backgrounds/streets.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Ubuntu.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Scripts/animessage.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Skip1.gd" type="Script" id=4]
+
+[node name="Background2" type="TextureFrame"]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 960.0
+texture = ExtResource( 1 )
+stretch_mode = 0
+
+[node name="Panel1" type="Panel" parent="."]
+
+visibility/opacity = 0.75
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 120.0
+margin/top = 720.0
+margin/right = 1160.0
+margin/bottom = 880.0
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="Panel1"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 40.0
+margin/top = 40.0
+margin/right = 520.0
+margin/bottom = 80.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+script/script = ExtResource( 3 )
+
+[node name="Timer1" type="Timer" parent="Panel1"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = false
+autostart = true
+
+[node name="Skip1" type="Button" parent="Panel1"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 840.0
+margin/top = -80.0
+margin/right = 940.0
+margin/bottom = -60.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Skip dialog..."
+flat = false
+script/script = ExtResource( 4 )
+
+[connection signal="timeout" from="Panel1/Timer1" to="Panel1/RichTextLabel1" method="_on_Timer1_timeout"]
+
+
